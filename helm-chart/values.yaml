@@ -1,0 +1,4 @@
+image:
+  tag: latest
+  repo: mchekini
+  name: scpi-invest-notification

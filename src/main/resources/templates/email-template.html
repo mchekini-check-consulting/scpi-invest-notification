@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Récapitulatif de votre investissement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            background-color: #007BFF;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .email-body {
+            padding: 20px;
+        }
+
+        .email-body h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .email-body p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .investment-details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #007BFF;
+        }
+
+        .investment-details p {
+            margin: 5px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 12px 24px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        .email-footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        .email-footer a {
+            color: #007BFF;
+        }
+
+        .promo-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+<table class="email-container">
+    <!-- Header section -->
+    <tr>
+        <td class="email-header">
+            <h1>Récapitulatif de votre investissement</h1>
+        </td>
+    </tr>
+
+    <!-- Image promotionnelle -->
+    <tr>
+        <td>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLNfE_awNcb3uvTCjCBPMWEOICeR1wiAUG4A&s"
+                 style="height: 220px;"  alt="Image promotionnelle SCPI" class="promo-image">
+        </td>
+    </tr>
+
+    <!-- Body section -->
+    <tr>
+        <td class="email-body">
+            <h2>Cher(e) <span th:text="${investorName}"></span>,</h2>
+
+            <p>Nous tenons à vous remercier pour votre confiance et votre investissement dans notre SCPI, <span th:text="${scpiName}"></span>.</p>
+
+            <p>Voici un récapitulatif de votre investissement :</p>
+
+            <div class="investment-details">
+                <p><strong>Montant investi :</strong> <span th:text="${investmentAmount}"> €</span></p>
+                <p><strong>Nombre de parts :</strong> <span th:text="${numberOfShares}"></span></p>
+                <p><strong>Prix de la part :</strong> <span th:text="${sharePrice}">€</span></p>
+                <p><strong>Type de propriété :</strong> <span th:text="${propertyType}"></span></p>
+                <p><strong>Durée de l'investissement :</strong> <span th:text="${investmentDuration}"></span> ans</p>
+            </div>
+
+            <p>Pour finaliser votre investissement, veuillez effectuer un virement à l'adresse suivante :</p>
+
+            <div class="investment-details">
+                <p><strong>IBAN :</strong> <span th:text="${iban}"></span></p>
+                <p><strong>BIC :</strong> <span th:text="${bic}"></span></p>
+            </div>
+
+            <p>N’hésitez pas à nous contacter si vous avez des questions ou besoin d’assistance supplémentaire.</p>
+
+            <p>Nous vous remercions encore pour votre engagement et sommes ravis de vous accueillir parmi nos investisseurs.</p>
+
+            <p>Cordialement,</p>
+            <p><strong><span th:text="${companyName}"></span></strong></p>
+
+        </td>
+    </tr>
+
+    <!-- Footer section -->
+    <tr>
+        <td class="email-footer">
+            <p>Vous recevez cet e-mail car vous avez investi dans notre SCPI.</p>
+            <p><a href="#" th:href="@{${unsubscribeUrl}}">Se désabonner</a></p>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
