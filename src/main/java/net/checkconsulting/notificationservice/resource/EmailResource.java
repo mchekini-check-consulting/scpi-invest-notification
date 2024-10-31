@@ -6,7 +6,6 @@ import net.checkconsulting.notificationservice.dto.EmailDetailsDto;
 import net.checkconsulting.notificationservice.service.EmailService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -26,19 +25,9 @@ public class EmailResource {
 
             log.info("trying send email to {} with these informations {}", to, emailDetailsDto);
 
-            Map<String, Object> templateModel = new HashMap<>();
-            templateModel.put("investorName", emailDetailsDto.getInvestorName());
-            templateModel.put("investmentAmount", emailDetailsDto.getInvestmentAmount());
-            templateModel.put("scpiName", emailDetailsDto.getScpiName());
-            templateModel.put("numberOfShares", emailDetailsDto.getNumberOfShares());
-            templateModel.put("sharePrice", emailDetailsDto.getSharePrice());
-            templateModel.put("propertyType", emailDetailsDto.getPropertyType());
-            templateModel.put("investmentDuration", emailDetailsDto.getInvestmentDuration());
-            templateModel.put("iban", emailDetailsDto.getIban());
-            templateModel.put("bic", emailDetailsDto.getBic());
-            templateModel.put("companyName", emailDetailsDto.getCompanyName());
+            Map<String, Object> templateModel = emailService.generateTemplateModel(emailDetailsDto);
 
-            emailService.sendEmail(to, subject, templateModel);
+            emailService.sendEmail(to, subject, templateModel, emailDetailsDto.getEmailType());
 
             log.info("email to {} successfully sent", to);
 
