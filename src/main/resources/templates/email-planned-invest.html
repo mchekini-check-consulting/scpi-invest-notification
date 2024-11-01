@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Confirmation de votre demande de programmation de versement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            background-color: #007BFF;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .email-body {
+            padding: 20px;
+        }
+
+        .email-body h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .email-body p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 12px 24px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        .email-footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        .email-footer a {
+            color: #007BFF;
+        }
+
+    </style>
+</head>
+<body>
+<table class="email-container">
+
+    <tr>
+        <td class="email-header">
+            <h1>Confirmation de votre demande de planification de versement numéro <strong> <span th:text="${plannedInvestmentId}"></span></strong></h1>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td class="email-body">
+            <h2>Cher(e) <span th:text="${investorName}"></span>,</h2>
+
+            <p>Nous vous informons que votre demande de planification de versement <strong> <span th:text="${plannedInvestmentId}"></span></strong> a bien été enregistrée et est actuellement en cours de traitement.</p>
+
+            <p>Nous vous tiendrons informé(e) dès que la demande aura été traitée.</p>
+
+            <p>Cordialement,</p>
+            <p><strong>L'équipe SCPI Invest Plus</strong></p>
+
+        </td>
+    </tr>
+
+
+    <tr>
+        <td class="email-footer">
+            <p>Vous recevez cet e-mail car vous avez effectué une demande de planification de versement sur SCPI-INVEST-PLUS.</p>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
