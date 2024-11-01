@@ -67,6 +67,7 @@ public class EmailService {
         templateModel.put("investmentDuration", emailDetailsDto.getInvestmentDuration());
         templateModel.put("iban", emailDetailsDto.getIban());
         templateModel.put("bic", emailDetailsDto.getBic());
+        templateModel.put("libelle", emailDetailsDto.getLibelle());
         templateModel.put("companyName", emailDetailsDto.getCompanyName());
         return templateModel;
     }
