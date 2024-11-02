@@ -3,6 +3,7 @@ package net.checkconsulting.notificationservice.resource;
 
 import lombok.extern.slf4j.Slf4j;
 import net.checkconsulting.notificationservice.dto.EmailDetailsDto;
+import net.checkconsulting.notificationservice.dto.EmailPlannedInvestPartnerNotificationDto;
 import net.checkconsulting.notificationservice.dto.EmailPlannedInvestment;
 import net.checkconsulting.notificationservice.service.EmailService;
 import net.checkconsulting.notificationservice.service.PlannifedInvestEmailService;
@@ -62,6 +63,29 @@ public class EmailResource {
             return "E-mail envoyé avec succès!";
         } catch (Exception e) {
             log.error("an error occured when sending planned investment email to {}", to);
+            return "Échec de l'envoi de l'e-mail.";
+        }
+    }
+
+
+    @PostMapping("/reject-planned-invest")
+    public String sendRejectPlannedInvestEmail(@RequestParam String to,@RequestParam String subject, @RequestBody EmailPlannedInvestPartnerNotificationDto emailDetailsDto) {
+        try {
+
+            log.info("trying send email for reject planned investement to {} with these informations {}", to, emailDetailsDto);
+
+            Map<String, Object> templateModel = new HashMap<>();
+            templateModel.put("investorName", emailDetailsDto.getInvestorName());
+            templateModel.put("motifRefus", emailDetailsDto.getReason());
+
+
+            plannifedInvestEmailService.sendEmail(to, subject,templateModel,"email-reject-planned-invest");
+
+            log.info("reject planned investment email to {} successfully sent", to);
+
+            return "E-mail envoyé avec succès!";
+        } catch (Exception e) {
+            log.error("an error occured when sending reject planned investment email to {}", to);
             return "Échec de l'envoi de l'e-mail.";
         }
     }
