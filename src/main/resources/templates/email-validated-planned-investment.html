@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Confirmation d’Acceptation de Demande de Prélèvement Programmé</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            background-color: #28a745;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .email-body {
+            padding: 20px;
+        }
+        .email-body h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .email-body p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .email-footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
+        .email-footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<table class="email-container">
+    <tr>
+        <td class="email-header">
+            <h1>Confirmation de Demande de Prélèvement Programmé</h1>
+        </td>
+    </tr>
+    <tr>
+        <td class="email-body">
+            <h2>Cher(e) <span th:text="${investorName}"></span>,</h2>
+            <p>Nous vous informons que votre demande de versement programmé a été validée.</p>
+            <p>Les prélèvements seront à une fréquence de <span th:text="${frequence}"></span>, tous les <span th:text="${jourDuMois}"></span> pour un montant de <span th:text="${montant}"></span>.</p>
+            <p>Nous vous remercions de votre confiance et restons à votre disposition pour toute question.</p>
+            <p>Cordialement,</p>
+            <p><strong>L'équipe SCPI Invest Plus</strong></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="email-footer">
+            <p>Vous recevez cet e-mail car vous avez effectué une demande de prélèvement programmé sur SCPI Invest Plus.</p>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
