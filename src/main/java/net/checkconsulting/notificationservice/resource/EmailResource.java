@@ -89,6 +89,29 @@ public class EmailResource {
             return "Échec de l'envoi de l'e-mail.";
         }
     }
+
+    @PostMapping("/validated-planned-invest")
+    public String sendValidatedPlannedInvestEmail(@RequestParam String to,@RequestParam String subject, @RequestBody EmailPlannedInvestPartnerNotificationDto emailDetailsDto) {
+        try {
+
+            log.info("trying send email for validated planned investement to {} with these informations {}", to, emailDetailsDto);
+
+            Map<String, Object> templateModel = new HashMap<>();
+            templateModel.put("investorName", emailDetailsDto.getInvestorName());
+            templateModel.put("montant",emailDetailsDto.getAmount());
+            templateModel.put("jourDuMois", emailDetailsDto.getDebitDayOfMonth());
+            templateModel.put("frequence", emailDetailsDto.getFrequency());
+
+            plannifedInvestEmailService.sendEmail(to, subject,templateModel,"email-validated-planned-investment");
+
+            log.info("validated planned investment email to {} successfully sent", to);
+
+            return "E-mail envoyé avec succès!";
+        } catch (Exception e) {
+            log.error("an error occured when sending reject planned investment email to {}", to);
+            return "Échec de l'envoi de l'e-mail.";
+        }
+    }
 }
 
 
